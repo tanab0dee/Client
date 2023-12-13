@@ -1,0 +1,49 @@
+<div class="container max-w-screen-lg mx-auto mb-3 mt-10">
+  <div class="text-gray-900 flex justify-center">
+    <div class="m-0 sm:m-10 bg-white shadow-md rounded-lg flex justify-center flex-1">
+      <div class="flex-1 bg-indigo-100 text-center hidden lg:flex rounded-lg">
+        <div class="w-full bg-contain bg-center bg-no-repeat"
+          style="background-image: url('/assets/images/sign_up.svg');">
+        </div>
+      </div>
+      <div class="lg:w-1/2 xl:w-5/12 p-3 sm:p-12">
+        <div class="mt-12 flex flex-col p-3">
+          <h2 class="text-2xl text-center font-extrabold">Sign up</h2>
+          <p class="text-sm font-normal text-gray-700 dark:text-white text-center mt-4">
+            Already have an account?
+            <a class="font-semibold" routerLinkActive="active"routerLink="/login">Sign in here</a>
+          </p>
+          <form (ngSubmit)="register()" [formGroup]="registerForm" novalidate>
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email<span
+                class="text-red-500">*</span></label>
+            <input type="email" name="email" id="email" formControlName="email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              placeholder="Your Email" required />
+            <div *ngIf="registerForm.get('email')?.hasError('pattern')" class="text-red-500 text-xs pt-1">Please enter a
+              valid email address.</div>
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white pt-2">Password<span
+                class="text-red-500">*</span></label>
+            <input type="password" id="password" formControlName="password"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Password" required />
+            <div *ngIf="registerForm.get('password')?.hasError('pattern')" class="text-red-500 text-xs pt-1">Password must
+              be between 8 and 16 characters long, and contain at least one lowercase and one uppercase letter.</div>
+            <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white pt-2">Confirm
+              Password<span class="text-red-500">*</span></label>
+            <input type="password" id="confirm_password" formControlName="ConfirmPassword"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Repeat your password" required />
+            <div *ngIf="registerForm.errors?.['passwordMatcherror']"  class="text-red-500 text-xs pt-1">
+              <div >Password does not match.</div>
+            </div>
+            <button type="submit"  [disabled]="isLoading"
+              class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-4">
+              Sign up
+            </button>
+          </form>
+          <p-toast></p-toast>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

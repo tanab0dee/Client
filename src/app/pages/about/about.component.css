@@ -1,0 +1,48 @@
+.Aboutus{
+    font-family: sans-serif;
+}
+.about-us {
+    font-family: sans-serif;
+}
+
+.What-is-SFIA{
+    font-family: sans-serif;
+}
+
+.our-Team {
+    font-family: sans-serif;
+}
+
+.About{
+    width: 100%;
+    min-height: 95vh;
+    background-color: rgb(255, 246, 234);
+
+}
+
+.SFIA{
+    width: 100%;
+    min-height: 95vh;
+}
+
+.custom-background {
+    width: 100%;
+    border-radius: 100% 20% 0 0 / 160px 10px 0 0; 
+    background-color: #facc15; 
+    padding: 90px; 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.Hero{
+    width: 100%;
+    min-height: 95vh;
+    background-color: rgb(255, 255, 255);
+}
+
+.Advisor{
+    width: 100%;
+    min-height: 95vh;
+    background-color: #fffbeb;
+}
+

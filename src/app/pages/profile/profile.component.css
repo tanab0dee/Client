@@ -1,0 +1,30 @@
+.image {
+    position: relative;
+}
+
+.image label {
+    background-color: #ffffff;
+    color: #fff;
+    padding: 6px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    font-size: 13px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    border: 2px dotted rgb(0, 0, 0);
+}
+
+.gradient {
+    background: linear-gradient(90deg, rgba(14,165,233,1) 0%, rgba(165,243,252,1) 100%);
+  }
+
+  .disabled-button {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
