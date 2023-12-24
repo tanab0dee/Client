@@ -6,7 +6,7 @@
       <h1 class="my-4 text-3xl font-bold leading-tight text-center">
         SFIA VERSION 8 COMPETENCY PROFILE SYSTEM
       </h1>
-      <p class="leading-normal text-xl mb-8 text-center">
+      <p class="leading-normal text-2xl mb-8 text-center">
         เป็นแพลตฟอร์มที่ช่วยวิเคราะห์ทักษะ ศักยภาพและประสิทธิภาพของบุคคล<br>ให้เข้ากับเกณฑ์มาตรฐาน SFIA Version 8
       </p>
     </div>
@@ -72,12 +72,12 @@
 
         <!-- InputText and Submit Button -->
         <div class="md:w-full">
-          <label class="block mb-2 text-base text-gray-900 dark:text-white font-semibold">Skill :</label>
+          <label class="block mb-2 text-base text-gray-900 dark:text-white font-semibold">Jobs :</label>
           <div class="flex items-center">
             <label for="search" class="sr-only">Search</label>
             <div class="w-full">
               <input type="text" [(ngModel)]="searchSkill" [ngModelOptions]="{ standalone: true }"
-                placeholder="Find your skill here!" id="search" (input)="searchSkills()"
+                placeholder="Find your jobs here!" id="search" (input)="searchSkills()"
                 class="ng-invalid ng-dirty w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </div>
           </div>
@@ -90,7 +90,7 @@
   <!-- Result Data -->
   <div class="flex flex-col justify-center items-center">
     <h2 class="my-2 pt-3 text-xl font-bold text-center text-gray-800">
-      All Skills
+      All Jobs
     </h2>
     <div class="w-full mb-2">
       <div class="h-1 mx-auto gradient w-48 opacity-25 my-0 py-0 rounded-t"></div>

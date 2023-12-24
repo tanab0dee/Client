@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
-import { EnvEndpointService } from 'src/app/service/env.endpoint.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,12 +13,7 @@ export class PortfolioDataService {
   private nameSkill:string = "";
   private filteredSkills: any[] = [];
 
-  ENV_REST_API = `${this.envEndpointService.ENV_REST_API}`
-
-  constructor(
-    private http: HttpClient,
-    private envEndpointService: EnvEndpointService
-    ) { }
+  constructor(private http: HttpClient) { }
 
   setFilteredSkills(filteredSkills: any[]): void {
     this.filteredSkills = filteredSkills;

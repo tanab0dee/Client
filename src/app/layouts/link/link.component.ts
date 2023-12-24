@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Emitter } from 'src/app/emitters/emitter';
-import { FormBuilder } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
-
 import { PortfolioDataService } from 'src/app/service/portfolio-data.service';
 
 interface Information {
@@ -29,8 +26,7 @@ export class LinkComponent implements OnInit {
     private router: Router,
     private primengConfig: PrimeNGConfig,
     private portfolioDataService: PortfolioDataService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.fetchLinkData();
@@ -43,14 +39,12 @@ export class LinkComponent implements OnInit {
   fetchLinkData(): void {
     this.portfolioDataService.getLinkData().subscribe({
       next: (res: any) => {
-        console.log(res)
         this.information = res.information.map((info: any) => ({
           info_text: info.info_text,
         }));
       },
       error: () => {
         this.router.navigate(['/login']);
-        console.error('You are not logged in');
         Emitter.authEmitter.emit(false);
       },
     });
@@ -64,16 +58,12 @@ export class LinkComponent implements OnInit {
     const urlParts = fullURL.split('://');
     let displayURL = urlParts[urlParts.length - 1];
 
-    // Remove trailing spaces
     displayURL = displayURL.trim();
 
-    // Check if the displayURL is longer than the specified maxLength
     if (displayURL.length > maxLength) {
       return displayURL.substr(0, maxLength) + '...';
     }
 
-    // Check if displayURL is not empty or just spaces
     return displayURL.trim() !== '' ? displayURL : fullURL;
   }
-
 }
