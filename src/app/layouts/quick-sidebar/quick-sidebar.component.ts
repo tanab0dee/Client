@@ -1,16 +1,15 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component,OnInit } from '@angular/core';
 import { Emitter } from 'src/app/emitters/emitter';
 import { Router } from '@angular/router';
 import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
 import { HttpClient } from '@angular/common/http';
 import { EnvEndpointService } from 'src/app/service/env.endpoint.service';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-quick-sidebar',
   templateUrl: './quick-sidebar.component.html',
   styleUrls: ['./quick-sidebar.component.css'],
-  providers: [CookieService],
 })
 export class QuickSidebarComponent implements OnInit {
 
