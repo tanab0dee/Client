@@ -18,6 +18,7 @@ import {
   ApexXAxis,
   ApexTitleSubtitle,
 } from "ng-apexcharts";
+import { Title } from '@angular/platform-browser';
 
 type SkillAndLevel = {
   codeSkill: string;
@@ -147,10 +148,8 @@ export class HistoryComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private messageService: MessageService,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
     private envEndpointService: EnvEndpointService,
+    private titleService: Title
   ) {
     this.chartOptions.series = [
       {
@@ -176,6 +175,7 @@ export class HistoryComponent implements OnInit {
   groupedByLevel: Map<string, { codeSkill: string, skillName: string, levelName: string, description: string[], percentage: number }> = new Map();
 
   ngOnInit() {
+    this.titleService.setTitle('SFIAV8 | Summary');
     this.checkLogin();
     Emitter.authEmitter.emit(true);
     this.getHistory();
@@ -358,8 +358,7 @@ export class HistoryComponent implements OnInit {
 
     if (filteredSkills.length > 0) {
       const { codeSkill, skillName } = filteredSkills[0];
-      const skillAndLevel = { codeSkill, skillName };
-      this.labelOfDataChart = [skillAndLevel];
+      this.labelOfDataChart = [{ codeSkill, skillName }];
     }
 
     const percentages: number[] = [];
