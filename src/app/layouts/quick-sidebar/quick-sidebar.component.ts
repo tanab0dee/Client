@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
 import { HttpClient } from '@angular/common/http';
 import { EnvEndpointService } from 'src/app/service/env.endpoint.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-quick-sidebar',
   templateUrl: './quick-sidebar.component.html',
-  styleUrls: ['./quick-sidebar.component.css']
+  styleUrls: ['./quick-sidebar.component.css'],
+  providers: [CookieService],
 })
 export class QuickSidebarComponent implements OnInit {
 
@@ -20,6 +22,7 @@ export class QuickSidebarComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private envEndpointService: EnvEndpointService,
+    private cookieService: CookieService
     ) {}
 
   ngOnInit(): void {
@@ -29,6 +32,7 @@ export class QuickSidebarComponent implements OnInit {
   }
 
   logOut() {
+    this.cookieService.deleteAll();
     this.http
       .post(`${this.ENV_REST_API}/logout`, {}, { withCredentials: true })
       .subscribe(() => {
