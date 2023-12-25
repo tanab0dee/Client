@@ -18,6 +18,8 @@ import {
   ApexGrid,
   ApexXAxis
 } from "ng-apexcharts";
+import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
+import { Router } from '@angular/router';
 
 type SkillAndLevel = {
   codeSkill: string;
@@ -141,6 +143,7 @@ export class PortfolioComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
     private envEndpointService: EnvEndpointService,
     private portfolioDataService: PortfolioDataService,
     private titleService: Title
@@ -169,6 +172,7 @@ export class PortfolioComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('SFIAV8 | Portfolio');
+    this.checkLogin();
     Emitter.authEmitter.emit(true);
     this.getHistory();
     this.filterSkills();
@@ -195,6 +199,19 @@ export class PortfolioComponent implements OnInit {
     const filteredSkills = this.portfolioDataService.getFilteredSkills();
   }
 
+  checkLogin() {
+    this.http.get(`${this.ENV_REST_API}/user`, { withCredentials: true })
+      .subscribe({
+        next: (res: any) => {
+          AuthInterceptor.accessToken;
+          Emitter.authEmitter.emit(true);
+        },
+        error: () => {
+          this.router.navigate(['/login']);
+          Emitter.authEmitter.emit(false);
+        }
+      });
+  }
 
 
   getHistory() {

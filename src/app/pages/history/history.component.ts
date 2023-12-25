@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Emitter } from 'src/app/emitters/emitter';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { EnvEndpointService } from 'src/app/service/env.endpoint.service';
 import {
   ApexChart,
   ApexAxisChartSeries,
-  ChartComponent,
   ApexDataLabels,
   ApexPlotOptions,
   ApexYAxis,
